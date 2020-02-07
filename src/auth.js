@@ -1,36 +1,22 @@
-// export function signIn() {
-//   axios({
-//     method: "POST",
-//     url: `${BASEURL}/signIn`,
-//     data: {
-//       email: "",
-//       password: ""
-//     }
-//   })
-//     .then(({ data }) => {
-//       console.log(data);
-//     })
-//     .catch(err => console.log(err));
-// }
-function gSignIn(googleUser) {
-  const id_token = googleUser.getAuthResponse().id_token;
-  axios({
-    method: "POST",
-    url: `${MyFunc.BASEURL}/googleSignIn`,
-    headers: {
-      token: id_token
-    }
-  })
-    .then(({ data }) => {
-      localStorage.setItem("token", data.token);
+import { googleOauth } from "../api/google";
+import { signIn } from "../api/auth";
+export const userSignIn = (email, password) => {
+  signIn(email, password)
+    .then(response => {
+      localStorage.setItem("TOKEN", response);
     })
     .catch(err => console.log(err));
-}
+};
+window.onSignIn = function gSignIn(googleUser) {
+  const access_token = googleUser.getAuthResponse().id_token;
+  googleOauth(access_token)
+    .then(response => localStorage.setItem("GTOKEN", response))
+    .catch(err => console.log(err));
+};
 
-export function onSignOut() {
+export const onSignOut = () => {
   const auth = gapi.auth2.getAuthInstance();
   auth.signOut().then(response => {
     localStorage.clear();
   });
-}
-window.onSignIn = gSignIn;
+};

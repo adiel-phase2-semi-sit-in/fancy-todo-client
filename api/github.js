@@ -1,6 +1,5 @@
-// require("dotenv").config();
 import { loginWithGithub } from "github-oauth-popup";
-import axios from "../api/axios";
+import axios from "./axios";
 const params = {
   client_id: process.env.GITHUB_CLIENT_ID,
   scope: "read:user"
@@ -18,7 +17,7 @@ export const githubOauth = () =>
         });
       })
       .then(({ data }) => {
-        resolve(data);
+        resolve(data.token);
       })
       .catch(err => reject(err));
   });
