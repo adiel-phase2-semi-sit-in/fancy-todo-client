@@ -1,0 +1,28 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "NODE_ENV=development parcel serve index.html --port 8080"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adiel-phase2-semi-sit-in/fancy-todo-client.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adiel-phase2-semi-sit-in/fancy-todo-client/issues"
+  },
+  "homepage": "https://github.com/adiel-phase2-semi-sit-in/fancy-todo-client#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "github-oauth-popup": "^1.2.0"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
+}

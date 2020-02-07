@@ -1,10 +1,22 @@
-const BASEURL = "http://localhost:3000/users";
-
-function onSignIn(googleUser) {
+// export function signIn() {
+//   axios({
+//     method: "POST",
+//     url: `${BASEURL}/signIn`,
+//     data: {
+//       email: "",
+//       password: ""
+//     }
+//   })
+//     .then(({ data }) => {
+//       console.log(data);
+//     })
+//     .catch(err => console.log(err));
+// }
+function gSignIn(googleUser) {
   const id_token = googleUser.getAuthResponse().id_token;
   axios({
     method: "POST",
-    url: `${BASEURL}/googleSignIn`,
+    url: `${MyFunc.BASEURL}/googleSignIn`,
     headers: {
       token: id_token
     }
@@ -15,24 +27,10 @@ function onSignIn(googleUser) {
     .catch(err => console.log(err));
 }
 
-function signIn() {
-  axios({
-    method: "POST",
-    url: `${BASEURL}/signIn`,
-    data: {
-      email: "",
-      password: ""
-    }
-  })
-    .then(({ data }) => {
-      console.log(data);
-    })
-    .catch(err => console.log(err));
-}
-
-function onSignOut() {
+export function onSignOut() {
   const auth = gapi.auth2.getAuthInstance();
   auth.signOut().then(response => {
     localStorage.clear();
   });
 }
+window.onSignIn = gSignIn;

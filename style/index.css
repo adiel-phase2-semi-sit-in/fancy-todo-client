@@ -5,7 +5,7 @@
   font-family: sans-serif; }
 
 body {
-  background-image: url("./assets/bg.png");
+  background-image: url("../assets/bg.png");
   background-size: cover; }
 
 .container {
@@ -65,6 +65,7 @@ h1 {
         cursor: text; }
   .card .card-footer {
     width: 100%;
+    margin-top: 8px;
     border: 1px solid black;
     padding: 20px;
     border-bottom-left-radius: 8px;
@@ -97,19 +98,45 @@ h1 {
   background-color: #0680f9; }
 
 .abcRioButton {
-  border-radius: 8px !important; }
+  border-radius: 4px !important; }
 
 .btn-github {
-  background-color: black;
-  outline: none;
-  font-size: 16px;
+  background-color: #171515;
   color: #fff;
-  padding: 8px;
   border-radius: 4px;
-  border: none;
-  width: 40%; }
+  width: 120px;
+  height: 36px;
+  outline: none;
+  cursor: pointer;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25); }
+  .btn-github .btn-github-wrapper {
+    height: 100%;
+    width: 100%; }
+    .btn-github .btn-github-wrapper .icon {
+      float: left;
+      padding: 8px; }
+      .btn-github .btn-github-wrapper .icon .icon-child {
+        height: 22px;
+        width: 22px;
+        background-image: url("../assets/GitHub-Mark-Light-32px.png");
+        background-size: cover; }
+    .btn-github .btn-github-wrapper span {
+      padding: 8px;
+      font-size: 13px;
+      line-height: 34px;
+      font-weight: 500;
+      margin: 0 6px;
+      vertical-align: top; }
 
 .btn-github:hover {
-  cursor: pointer; }
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.75);
+  transition: 0.25s all; }
+
+.oauth {
+  display: flex;
+  margin-top: 12px;
+  width: 100%;
+  padding: 12px 56px;
+  justify-content: space-between; }
 
 /*# sourceMappingURL=index.css.map */
