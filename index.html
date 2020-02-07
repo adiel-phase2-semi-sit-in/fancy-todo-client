@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta
+      name="google-signin-client_id"
+      content="481052373140-eeq1j52ph5rf7g9d0fl31h6tuesli88n.apps.googleusercontent.com"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <title>Fancy Todo</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <form>
+            <h1>Sign In</h1>
+            <div class="input-group">
+              <input type="text" id="email" required autocomplete="off" />
+              <label for="email">Email</label>
+            </div>
+            <div class="input-group">
+              <input type="password" id="password" required />
+              <label for="password">Password</label>
+            </div>
+            <button type="submit" class="btn">Sign In</button>
+          </form>
+          <div
+            style="display: flex; margin-top: 12px; width: 100%; padding: 0 56px; justify-content: space-between;"
+          >
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+           </a> </a><button id="github-signIn" class="btn-github"><a href="https://github.com/login/oauth/authorize?client_id=5d40b75bc46d5815370e">Github</a></button>
+          </div>
+          <div class="card-footer">
+            <p>New user? <span>Sign Up</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <section id="dashboard">
+      <button id="logout">sign out</button>
+    </section> -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="src/auth.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

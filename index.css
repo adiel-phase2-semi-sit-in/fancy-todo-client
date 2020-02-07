@@ -1,0 +1,115 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif; }
+
+body {
+  background-image: url("./assets/bg.png");
+  background-size: cover; }
+
+.container {
+  width: 70%;
+  margin: 0 auto;
+  padding-top: 60px; }
+
+h1 {
+  text-align: center;
+  margin-bottom: 36px;
+  color: #595959; }
+
+.card {
+  display: flex;
+  justify-content: center; }
+  .card h1 {
+    margin-bottom: 24px; }
+  .card .card-body {
+    display: flex;
+    align-items: center;
+    width: 48%;
+    background-color: #fff;
+    flex-direction: column;
+    border-radius: 8px; }
+  .card form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 56px;
+    padding-right: 56px;
+    padding-top: 32px; }
+    .card form .input-group {
+      position: relative; }
+      .card form .input-group input {
+        font-size: 16px;
+        width: 100%;
+        border: none;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #a6a6a6;
+        padding: 0.5rem 0;
+        background: none; }
+      .card form .input-group input:focus {
+        outline: none !important;
+        border-bottom: 1px solid #1e8dfa;
+        box-shadow: 0 1px rgba(30, 141, 250, 0.3); }
+      .card form .input-group input:focus ~ label,
+      .card form .input-group input:valid ~ label {
+        top: -12px;
+        font-size: 14px;
+        color: #1e8dfa; }
+      .card form .input-group label {
+        position: absolute;
+        top: 8px;
+        left: 0;
+        color: #a6a6a6;
+        transition: 0.2s all;
+        cursor: text; }
+  .card .card-footer {
+    width: 100%;
+    border: 1px solid black;
+    padding: 20px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border: none;
+    background-color: #f2f2f2;
+    border-top: 1px solid #cccccc; }
+    .card .card-footer p {
+      text-align: center;
+      color: gray;
+      font-size: 16px; }
+      .card .card-footer p span {
+        color: blue;
+        text-decoration: underline; }
+      .card .card-footer p span:hover {
+        cursor: pointer; }
+
+.btn {
+  font-size: 16px;
+  color: #fff;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  background-color: #1e8dfa;
+  margin-top: 12px;
+  outline: none; }
+
+.btn:hover {
+  cursor: pointer;
+  background-color: #0680f9; }
+
+.abcRioButton {
+  border-radius: 8px !important; }
+
+.btn-github {
+  background-color: black;
+  outline: none;
+  font-size: 16px;
+  color: #fff;
+  padding: 8px;
+  border-radius: 4px;
+  border: none;
+  width: 40%; }
+
+.btn-github:hover {
+  cursor: pointer; }
+
+/*# sourceMappingURL=index.css.map */

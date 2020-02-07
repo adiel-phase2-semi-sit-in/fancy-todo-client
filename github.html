@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        const url_string = window.location.href;
+        const url = new URL(url_string);
+        const code = url.searchParams.get("code");
+        axios({
+          method: "GET",
+          url: "http://localhost:3000/users/signIn/callback",
+          headers: {
+            code
+          }
+        })
+          .then(({ data }) => {
+            window.location.href = "http://localhost:8080";
+            localStorage.setItem("TOKEN", data.code);
+          })
+          .catch(err => console.log(err));
+      });
+    </script>
+  </body>
+</html>
