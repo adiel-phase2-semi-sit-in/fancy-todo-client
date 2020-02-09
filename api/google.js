@@ -15,5 +15,5 @@ export const googleOauth = access_token =>
       .then(({ data }) => {
         resolve(data.token);
       })
-      .catch(err => reject(err));
+      .catch(err => reject(err.response.data));
   });

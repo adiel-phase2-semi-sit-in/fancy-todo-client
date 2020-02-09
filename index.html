@@ -8,46 +8,210 @@
       name="google-signin-client_id"
       content="481052373140-eeq1j52ph5rf7g9d0fl31h6tuesli88n.apps.googleusercontent.com"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" type="text/css" href="/style/index.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
     <title>Fancy Todo</title>
   </head>
   <body>
-    <div class="container">
-      <div class="card">
-        <div class="card-body">
-          <form id="form-signIn" action="POST">
-            <h1>Sign In</h1>
-            <div class="input-group">
-              <input type="text" id="email" required autocomplete="off" />
-              <label for="email">Email</label>
-            </div>
-            <div class="input-group">
-              <input type="password" id="password" required />
-              <label for="password">Password</label>
-            </div>
-            <button type="submit" class="btn">Sign In</button>
-          </form>
-          <div class="oauth">
-            <div class="g-signin2" data-onsuccess="onSignIn"></div>
-            <div id="github-signIn" class="btn-github">
-              <div class="btn-github-wrapper">
-                <div class="icon">
-                  <div class="icon-child"></div>
+    <nav>
+      <div class="nav-wrapper  blue darken-1">
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li>
+            <a id="logout" class="waves-effect waves-light btn red lighten-1"
+              >Sign Out</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="custom-container pt-10 ">
+      <!-- landing-page -->
+      <section id="landing-page">
+        <div class="custom-card">
+          <!-- start form sign in -->
+          <div id="sign-in-form" class="custom-card-body">
+            <form id="form-signIn" action="POST">
+              <h3 class="mt-2">Sign In</h3>
+              <div class="input-field mt-0 mb-3">
+                <input
+                  type="text"
+                  class=""
+                  name="email"
+                  required
+                  autocomplete="off"
+                  autofocus
+                />
+                <label for="email">Email</label>
+              </div>
+              <div class="input-field mt-0 mb-2">
+                <input type="password" name="password" required />
+                <label for="password">Password</label>
+              </div>
+              <button type="submit" class="btn blue darken-2">
+                Sign In
+              </button>
+            </form>
+            <div class="oauth">
+              <div class="g-signin2" data-onsuccess="onSignIn"></div>
+              <div id="github-signIn" class="btn-github">
+                <div class="btn-github-wrapper">
+                  <div class="icon">
+                    <div class="icon-child"></div>
+                  </div>
+                  <span>Sign In</span>
                 </div>
-                <span>Sign In</span>
               </div>
             </div>
+            <div class="custom-card-footer">
+              <p>New user? <span id="sign-up-btn">Sign Up</span></p>
+            </div>
+            <!-- end form sign in -->
           </div>
-          <div class="card-footer">
-            <p>New user? <span>Sign Up</span></p>
+          <!-- sign up page -->
+          <div id="sign-up-form" class="custom-card-body">
+            <form id="form-signUp" action="POST">
+              <h3 class="mt-2">Sign Up</h3>
+              <div class="input-field mt-0 mb-3">
+                <input
+                  type="text"
+                  name="emailSignUp"
+                  required
+                  autocomplete="off"
+                />
+                <label for="email">Email</label>
+              </div>
+              <div class="input-field mt-0 mb-2">
+                <input type="password" name="passwordSignUp" required />
+                <label for="password">Password</label>
+              </div>
+              <button type="submit" class="btn blue darken-2 mb-2">
+                Sign Up
+              </button>
+            </form>
+            <div class="custom-card-footer">
+              <p>
+                <span id="sign-in-btn">Already have an account ?</span>
+              </p>
+            </div>
+          </div>
+          <!-- end sign up page -->
+        </div>
+      </section>
+      <!-- end landing-page -->
+      <section id="dashboard-page">
+        <div class="row" id="content"></div>
+      </section>
+      <section id="constant">
+        <div
+          id="modal1"
+          class="modal"
+          style="background: transparent; overflow: hidden; box-shadow: none; margin: 0;"
+        >
+          <div class="progress">
+            <div class="indeterminate"></div>
+          </div>
+          <h4 class="center-align white-text">Loading...</h4>
+        </div>
+        <div id="modal-create" class="modal" style="overflow: visible;">
+          <div class="row">
+            <span id="close-create-form" class="grey-text text-darken-4"
+              ><i
+                class="material-icons right ml-0 mr-2 mt-2"
+                style="cursor: pointer;"
+                >close</i
+              ></span
+            >
+            <form
+              id="form-todo"
+              method="POST"
+              class="col s12 pl-10 pr-10 pt-10"
+            >
+              <h4 class="mb-5">Submit Todo</h4>
+              <div class="input-field">
+                <input id="title" type="text" class="validate" />
+                <label for="title">Title</label>
+              </div>
+              <div class="input-field">
+                <input id="description" type="text" class="validate" />
+                <label for="description">Description</label>
+              </div>
+              <div class="input-field">
+                <button id="due_date" class="datepicker btn blue darken-2">
+                  Date<i class="large material-icons right">date_range</i>
+                </button>
+              </div>
+
+              <button type="submit" class="btn green darken-2 right">
+                Submit<i class="large material-icons right">check</i>
+              </button>
+            </form>
           </div>
         </div>
-      </div>
+        <div id="modal-update" class="modal" style="overflow: visible;">
+          <div class="row">
+            <span id="close-update-form" class="grey-text text-darken-4"
+              ><i
+                class="material-icons right ml-0 mr-2 mt-2"
+                style="cursor: pointer;"
+                >close</i
+              ></span
+            >
+            <form id="form-update" class="col s12 pl-10 pr-10 pt-10">
+              <h4 class="mb-5">Update Todo</h4>
+              <div class="input-field">
+                <input
+                  id="title-update"
+                  type="text"
+                  class="validate"
+                  autofocus
+                />
+                <label for="title">Title</label>
+              </div>
+              <div class="input-field">
+                <input id="description-update" type="text" class="validate" />
+                <label for="description">Description</label>
+              </div>
+              <div class="input-field">
+                <button
+                  id="due_date-update"
+                  class="datepicker btn blue darken-2"
+                  type="button"
+                >
+                  Date<i class="large material-icons right">date_range</i>
+                </button>
+              </div>
+              <div class="input-field">
+                <button type="submit" class="btn green darken-2 right">
+                  Submit<i class="large material-icons right">check</i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div id="create-todo" class="fixed-action-btn">
+          <a
+            class="btn-floating btn-large waves-effect pulse waves-light amber darken-3"
+          >
+            <i class="large material-icons">mode_edit</i>
+          </a>
+        </div>
+      </section>
     </div>
-    <section id="dashboard">
-      <button id="logout">sign out</button>
-    </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="index.js"></script>
   </body>
