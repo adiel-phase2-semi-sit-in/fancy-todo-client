@@ -4,6 +4,7 @@ const signUpForm = $("#sign-up-form");
 const landingPage = $("#landing-page");
 const dashboardPage = $("#dashboard-page");
 const navbar = $("nav");
+const floatButton = $("#create-todo");
 
 export const signInNav = () => {
   signUpForm.hide();
@@ -17,6 +18,7 @@ export const signUpNav = () => {
 
 export const landingNav = () => {
   navbar.hide();
+  floatButton.hide();
   landingPage.show();
   dashboardPage.hide();
 };
@@ -26,6 +28,7 @@ export const dashboardNav = () => {
   navbar.show();
   dashboardPage.show();
   landingPage.hide();
+  floatButton.show();
 };
 
 export const errorToast = message => {
