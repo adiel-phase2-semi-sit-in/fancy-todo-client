@@ -1,10 +1,13 @@
 import { googleOauth } from "../api/google";
 import { signIn, signUp } from "../api/auth";
 import { landingNav, dashboardNav, signInNav, errorToast } from "./nav";
+import { modalLoad } from "../index";
 
 export const userSignIn = (email, password) => {
+  modalLoad.open();
   signIn(email, password)
     .then(response => {
+      modalLoad.close();
       localStorage.setItem("TOKEN", response);
       dashboardNav();
     })
@@ -12,8 +15,10 @@ export const userSignIn = (email, password) => {
 };
 
 export const userSignUp = (email, password) => {
+  modalLoad.open();
   signUp(email, password)
     .then(response => {
+      modalLoad.close();
       localStorage.setItem("TOKEN", response);
       dashboardNav();
     })
@@ -21,9 +26,11 @@ export const userSignUp = (email, password) => {
 };
 
 window.onSignIn = function gSignIn(googleUser) {
+  modalLoad.open();
   const access_token = googleUser.getAuthResponse().id_token;
   googleOauth(access_token)
     .then(response => {
+      modalLoad.close();
       localStorage.setItem("TOKEN", response);
       dashboardNav();
     })

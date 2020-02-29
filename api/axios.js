@@ -1,4 +1,4 @@
 import axios from "axios";
 export default axios.create({
-  baseURL: "https://boiling-spire-58072.herokuapp.com"
+  baseURL: process.env.BASE_URL || "https://boiling-spire-58072.herokuapp.com"
 });
