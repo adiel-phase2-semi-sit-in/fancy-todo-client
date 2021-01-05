@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/adiel-phase2-semi-sit-in/fancy-todo-client#readme",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "github-oauth-popup": "^1.2.0"
   },
   "devDependencies": {
